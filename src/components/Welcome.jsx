@@ -4,8 +4,11 @@ import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 import Input from "./Input";
+import {TransactionContext} from "../context/TransactionContext"
 import Loader from './Loader'
 const Welcome = () => {
+  const {value} = useContext(TransactionContext);
+  console.log(value);
   // const [loading,isLoading] = useState(true);
   const isLoading = false;
   const handleChange = () => {}
