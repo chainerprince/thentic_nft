@@ -15,20 +15,44 @@ const getEtheriumContract = () => {
 }
 
 export const TransactionProvider = ({children}) => {
+    const [currentAccount,setCurrentAccount] = useState('')
     const checkWalletConnection = async () => {
+        try {
+            
+            if(!ethereum) return alert("Please install meta mask");
+            const accounts = await ethereum.request({method:'eth_accounts'})
+            if(accounts.length){
+                setCurrentAccount(accounts[0]);
+
+            }else{
+                console.log("No accounts linked");
+            }
+            console.log(accounts)
+
+        } catch (error) {
+            console.log(error)   
+            throw new Error("No ethereum object")
+        }
         
-        if(!ethereum) return alert("Please install meta mask");
-        const accounts = await ethereum.request({method:'eth_accounts'})
-        console.log(accounts)
     }
 
-    
+    const connectWallet = async() => {
+            try {
+                if(!ethereum) return alert("Please install meta mask");
+                const accounts = await ethereum.request({method:'eth_requestAccounts'})
+                setCurrentAccount(accounts[0]);
+                
+            } catch (error) {
+             console.log(error)   
+             throw new Error("No ethereum object")
+            }
+    }
 
     useEffect(()=>{
         checkWalletConnection();
     },[])
     return (
-        <TransactionContext.Provider value={{value:"Testing works fine and clea"}}>
+        <TransactionContext.Provider value={{connectWallet,currentAccount}}>
             {children}
         </TransactionContext.Provider>
     )
