@@ -18,6 +18,7 @@ export const TransactionProvider = ({children}) => {
     const [currentAccount,setCurrentAccount] = useState('')
     const [formData, setFormData] = useState({addressTo:"",amount:"",keyword:"",message:""})
     const [isLoading, setisLoading] = useState(false);
+    const [transactionCount,setTransactionCount] = useState(localStorage.getItem('transactionCount'));
 
     const handleChange = (e,name) => {
         setFormData((prevState)=>({...prevState,[name]:e.target.value}))
@@ -74,7 +75,14 @@ export const TransactionProvider = ({children}) => {
             setisLoading(true)
             console.log(`the transaction ${txHash.hash}`)
             await txHash.wait();
-            
+            setisLoading(false)
+            console.log(`Success ${txHash.hash}`)
+
+            const transactionCount = await transactionContract.getTransactionCount()
+            setTransactionCount(transactionCount.toNumber())
+
+
+
 
 
         } catch (error) {
