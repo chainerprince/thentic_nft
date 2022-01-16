@@ -10,13 +10,14 @@ const getEtheriumContract = () => {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
     const transactionContract = new ethers.Contract(contractAddress,contractAbi,signer)
-    console.log(provider,signer,transactionContract);
+    return transactionContract;
 
 }
 
 export const TransactionProvider = ({children}) => {
     const [currentAccount,setCurrentAccount] = useState('')
     const [formData, setFormData] = useState({addressTo:"",amount:"",keyword:"",message:""})
+    const [isLoading, setisLoading] = useState(false);
 
     const handleChange = (e,name) => {
         setFormData((prevState)=>({...prevState,[name]:e.target.value}))
@@ -55,6 +56,27 @@ export const TransactionProvider = ({children}) => {
     const sendTransaction = async () => {
         try {
             if(!ethereum) return alert("Please install meta mask");
+            const {addressTo,amount,keyword,message} = formData;
+            const parsedAmount = ethers.utils.parseEther(amount)
+
+            const transactionContract = getEtheriumContract()
+            await ethereum.request({
+                method: 'eth_sendTransaction',
+                params:{
+                    from:currentAccount,
+                    to:addressTo,
+                    gas:'0x5208',
+                    value:parsedAmount._hex
+                }
+            })
+
+            const txHash = await transactionContract.addToBlockchain(addressTo,parsedAmount,message,keyword);
+            setisLoading(true)
+            console.log(`the transaction ${txHash.hash}`)
+            await txHash.wait();
+            
+
+
         } catch (error) {
             throw new Error("No ethereum object")
         }
