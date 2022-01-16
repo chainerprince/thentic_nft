@@ -7,13 +7,21 @@ import Input from "./Input";
 import {TransactionContext} from "../context/TransactionContext"
 import Loader from './Loader'
 const Welcome = () => {
-  const {connectWallet,currentAccount} = useContext(TransactionContext);
+  const {connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
   
   // const [loading,isLoading] = useState(true);
   const isLoading = false;
-  const handleChange = () => {}
+  // const handleChange = () => {}
     // const connectWallet = () => {}
-    const handleSubmit = () => {}
+    const handleSubmit = () => {
+
+      const {addressTo,amount,keyword,message} = formData;
+      e.preventDefault();
+      if(!addressTo || !amount || !keyword || !message) return;
+      sendTransaction();
+    }
+
+
     return (
         <div className="flex w-full justify-center items-center">
              <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">

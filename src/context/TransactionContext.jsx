@@ -16,6 +16,11 @@ const getEtheriumContract = () => {
 
 export const TransactionProvider = ({children}) => {
     const [currentAccount,setCurrentAccount] = useState('')
+    const [formData, setFormData] = useState({addressTo:"",amount:"",keyword:"",message:""})
+
+    const handleChange = (e,name) => {
+        setFormData((prevState)=>({...prevState,[name]:e.target.value}))
+    }
     const checkWalletConnection = async () => {
         try {
             
@@ -47,12 +52,19 @@ export const TransactionProvider = ({children}) => {
              throw new Error("No ethereum object")
             }
     }
+    const sendTransaction = async () => {
+        try {
+            if(!ethereum) return alert("Please install meta mask");
+        } catch (error) {
+            throw new Error("No ethereum object")
+        }
+    }
 
     useEffect(()=>{
         checkWalletConnection();
     },[])
     return (
-        <TransactionContext.Provider value={{connectWallet,currentAccount}}>
+        <TransactionContext.Provider value={{connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction}}>
             {children}
         </TransactionContext.Provider>
     )
