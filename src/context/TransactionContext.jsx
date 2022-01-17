@@ -58,19 +58,23 @@ export const TransactionProvider = ({children}) => {
         try {
             if(!ethereum) return alert("Please install meta mask");
             const {addressTo,amount,keyword,message} = formData;
+            
             const parsedAmount = ethers.utils.parseEther(amount)
-
+            console.log(addressTo)
+            console.log(currentAccount)
             const transactionContract = getEtheriumContract()
+            console.log(currentAccount,"The transaction contract")
             await ethereum.request({
                 method: 'eth_sendTransaction',
-                params:{
+                params:[{
                     from:currentAccount,
                     to:addressTo,
                     gas:'0x5208',
                     value:parsedAmount._hex
-                }
+                }]
             })
 
+            
             const txHash = await transactionContract.addToBlockchain(addressTo,parsedAmount,message,keyword);
             setisLoading(true)
             console.log(`the transaction ${txHash.hash}`)
@@ -80,16 +84,10 @@ export const TransactionProvider = ({children}) => {
 
             const transactionCount = await transactionContract.getTransactionCount()
             setTransactionCount(transactionCount.toNumber())
-
-
-
-
-
         } catch (error) {
             throw new Error("No ethereum object")
         }
     }
-
     useEffect(()=>{
         checkWalletConnection();
     },[])

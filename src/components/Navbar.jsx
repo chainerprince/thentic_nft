@@ -45,7 +45,7 @@ const Navbar = () => {
             {["Market", "Exchange", "Tutorials", "Wallets"].map(
               (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" />,
             )}
-          </ul>
+          </ul> 
         )}
             </div>
 
