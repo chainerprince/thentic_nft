@@ -47,11 +47,11 @@ const Navbar = () => {
             )}
           </ul> 
         )}
-            </div>
+            </div> 
 
 
-        </nav>
+        </nav> 
     )
 }
 
-export default Navbar
+export default Navbar 
