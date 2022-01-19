@@ -13,13 +13,13 @@ const NavBarItem = ({title,classprops}) => {
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
     return (
-        <nav className="w-full flex md:justify-between items-center p-4">
-             <div className="md:flex-[0.5] flex-initial justify-center items-center">
+        <nav className="w-full main flex md:justify-between items-center p-4">
+             <div className="md:flex-1 flex-initial justify-center items-center">
                 <img src={logo} alt="logo" className="w-32 cursor-pointer" />
             </div>
 
 
-            <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
+            <ul className="text-white md:flex hidden list-none flex-row justify-around items-center flex-1">
                     {["Market", "Exchange", "Tutorials", "Wallets"].map((item, index) => (
                             <NavBarItem key={item + index} title={item} />
                 ))}
