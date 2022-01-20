@@ -13,7 +13,7 @@ const NavBarItem = ({title,classprops}) => {
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
     return (
-        <nav className="w-full main flex md:justify-between items-center p-4">
+        <nav className="w-full main flex justify-between  items-center p-4">
              <div className="md:flex-1 flex-initial justify-center items-center">
                 <img src={logo} alt="logo" className="w-32 cursor-pointer" />
             </div>

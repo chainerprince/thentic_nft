@@ -3,6 +3,7 @@ import dummyData from "../utils/dummyData";
 import {TransactionContext} from '../context/TransactionContext'
 import { shortenAddress } from '../utils/shortenAddress';
 import useFetching from '../hooks/useFetching';
+import Table from './Table';
 
 const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
     const gifUrl = useFetching({keyword})
@@ -13,7 +14,7 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
       sm:min-w-[270px]
       sm:max-w-[300px]
       min-w-full
-      flex-col p-3 rounded-md hover:shadow-2xl"
+      flex-col p-3 rounded-md shadow-lg hover:shadow-2xl"
     >
         <div className="flex flex-col items-center w-full mt-3">
                 <div className="display-flex justify-start w-full mb-6 p-2">
@@ -30,17 +31,17 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
                     <p className="text-white text-base">Message: {message}</p>
                     </>
                         )}
-                        <img
+                        {/* <img
                             src={gifUrl || url}
                             alt="nature"
                             className="w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover"
-                            />
+                            /> */}
 
                             
 
 
                 </div>
-                <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
+                <div className=" p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
                             <p className="text-[#37c7da] font-bold">{timestamp}</p>
                         </div>
                 
@@ -67,10 +68,11 @@ const Transactions = () => {
                      
                     }
                     <div className="flex flex-wrap justify-center items-center mt-10">
-                        {transactions?.reverse().map((transaction,id)=>
+                        {/* {transactions?.reverse().map((transaction,id)=> */}
 
-                            <TransactionCard key={id} {...transaction}/>
-                        )}
+                            {/* // <TransactionCard key={id} {...transaction}/> */}
+                            <Table/>
+                        {/* )} */}
                     </div>
 
             </div>
