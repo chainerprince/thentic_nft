@@ -11,16 +11,22 @@ const Table = () => {
               <thead class="bg-black">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Name
+                    Address From
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Title
+                    Address To
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Status
+                    Amount
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Role
+                    Charge Fees
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Token
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Timestamp
                   </th>
                   <th scope="col" class="relative px-6 py-3">
                     <span class="sr-only">Edit</span>
@@ -56,9 +62,15 @@ const Table = () => {
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                     Admin
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
+                    Admin
                   </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
+                    Admin
+                  </td>
+                  {/* <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                  </td> */}
                 </tr>
     
                 
