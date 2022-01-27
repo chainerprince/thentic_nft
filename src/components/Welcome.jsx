@@ -67,7 +67,7 @@ const Welcome = () => {
       </div>      
       </div>  
         <div className="flex flex-col flex-1 items-center justify-start w-full  mf:mt-0 mt-10">
-                        <div className="p-3 flex justify-end items-start flex-col rounded-xl w-72 h-52 sm:-rotate-6 sm:w-96 mb-2  sm:my-7 second ">
+                        <div className="p-3 flex justify-end items-start flex-col rounded-xl w-72 h-80 sm:w-3/4 mb-2  sm:my-7 second ">
                         <div className="flex justify-between flex-col w-full h-full">
                         <div className="flex justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
@@ -81,20 +81,20 @@ const Welcome = () => {
                   {/* {currentAccount} */}
                 </p>
                 <p className="text-white font-semibold text-lg mt-1">
-                  Ethereum
+                  Ishyura
                 </p>
               </div>
             </div>
             </div>
 
-            <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+            {/* <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
                 <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
                 <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
                 <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange} />
                 <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
-            </div>
-            <div className="h-[1px] w-full bg-gray-400 my-2" />
-            {isLoading
+            </div> */}
+            {/* <div className="h-[1px] w-full bg-gray-400 my-2" /> */}
+            {/* {isLoading
               ? <Loader />
               : (
                 <button
@@ -104,7 +104,7 @@ const Welcome = () => {
                 >
                   Send now
                 </button>
-              )}
+              )} */}
 
         </div>    
 </div>
