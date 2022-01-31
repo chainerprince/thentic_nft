@@ -66,7 +66,7 @@ const Welcome = () => {
           </div>
       </div>      
       </div>  
-        <div className="flex flex-col flex-1 items-center justify-start w-full  mf:mt-0 mt-10">
+        <div className="flex flex-col flex-1 items-start justify-start w-full  mf:mt-0 mt-10">
                         <div className="p-3 flex justify-end items-start flex-col rounded-xl w-72 h-80 sm:w-3/4 mb-2  sm:my-7 second ">
                         <div className="flex justify-between flex-col w-full h-full">
                         <div className="flex justify-between items-start">
@@ -85,8 +85,22 @@ const Welcome = () => {
                 </p>
               </div>
             </div>
+            
             </div>
-
+             {
+                  !currentAccount && 
+                  (
+                    <button
+                 onClick={connectWallet}
+                 className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
+                >
+                        <AiFillPlayCircle className="text-white mr-2" />
+                        <p className="text-white text-base font-semibold">
+                            Connect Wallet
+                        </p>
+                </button>
+                  )
+                }
             {/* <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
                 <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
                 <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
