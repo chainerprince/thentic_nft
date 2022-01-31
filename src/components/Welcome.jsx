@@ -103,7 +103,7 @@ const Welcome = () => {
                   !currentAccount && 
                   (
                   <button
-                 onClick={(prev)=>{setOpen(!prev)}}
+                 onClick={()=>setOpen(true)}
                  className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
                 >
                         <AiFillPlayCircle className="text-white mr-2" />
@@ -123,7 +123,7 @@ const Welcome = () => {
         </div>   
         {
           open ? (
-            <Modal isLoading={isLoading} handleSubmit = {handleSubmit} handleChange={handleChange} /> 
+            <Modal isLoading={isLoading} setOpen={setOpen} handleSubmit = {handleSubmit} handleChange={handleChange} /> 
           ): null
         }
         
