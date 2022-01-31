@@ -1,7 +1,10 @@
 import React from 'react';
+import Input from "./Input";
+import Loader from './Loader'
+const Modal = ({isLoading,handleChange,handleSubmit}) => {
+    return (
 
-const Modal = () => {
-  <div className=" sm:w-80 w-full h-96 flex flex-col justify-start px-3 py-1 items-center blue-glassmorphism">
+  <div className=" sm:w-80 w-full absolute h-96 flex flex-col justify-start px-3 py-1 ml-1/2 mr-1/2 top-4 items-center blue-glassmorphism">
               <h2 className="text-center font-bold text-white">Exhange tokens</h2>
               <div className="flex items-center justify-around">
       {isLoading
@@ -44,6 +47,7 @@ const Modal = () => {
                 </button>
               )}
             </div>
+    )
 };
 
 export default Modal;

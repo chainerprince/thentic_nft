@@ -3,14 +3,26 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
-import Input from "./Input";
+
 import {TransactionContext} from "../context/TransactionContext"
-import Loader from './Loader'
+
 import { shortenAddress } from "../utils/shortenAddress";
+import Modal from "./Modal";
 const Welcome = () => {
   const {connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
+
+  const [open,setOpen] = useState(false);
+
+  // const toggleOpen = () => {
+  //   if(open){
+  //     setOpen(false)
+  //   }else{
+  //     setOpen(true)
+  //   }
+  // }
   
   // const [loading,isLoading] = useState(true);
+  
   const isLoading = false;
   // const handleChange = () => {}
     // const connectWallet = () => {}
@@ -90,8 +102,8 @@ const Welcome = () => {
              {
                   !currentAccount && 
                   (
-                    <button
-                 onClick={connectWallet}
+                  <button
+                 onClick={(prev)=>{setOpen(!prev)}}
                  className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
                 >
                         <AiFillPlayCircle className="text-white mr-2" />
@@ -104,9 +116,17 @@ const Welcome = () => {
 
             
             {/* <div className="h-[1px] w-full bg-gray-400 my-2" /> */}
+
+            
            
 
-        </div>    
+        </div>   
+        {
+          open ? (
+            <Modal isLoading={isLoading} handleSubmit = {handleSubmit} handleChange={handleChange} /> 
+          ): null
+        }
+        
 </div>
     )
 }
