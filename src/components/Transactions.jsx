@@ -8,7 +8,7 @@ import Table from './Table';
 const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
     const gifUrl = useFetching({keyword})
     return (
-        <div className="second m-4 "
+        <div className="second w-4/5 sm:w-72 m-2 "
     >
         <div className="flex flex-col items-center w-full mt-3">
                 <div className="display-flex justify-start my-1 w-full mb-6 p-2">
