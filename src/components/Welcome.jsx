@@ -100,7 +100,7 @@ const Welcome = () => {
             
             </div>
              {
-                  !currentAccount && 
+                  currentAccount && 
                   (
                   <button
                  onClick={()=>setOpen(true)}

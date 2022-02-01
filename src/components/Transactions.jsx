@@ -17,18 +17,18 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
       flex-col p-3 rounded-md shadow-lg hover:shadow-2xl"
     >
         <div className="flex flex-col items-center w-full mt-3">
-                <div className="display-flex justify-start w-full mb-6 p-2">
+                <div className="display-flex justify-start my-1 w-full mb-6 p-2">
                     <a href={`https://ropsten.etherscan.io/address/${addressFrom}`} target="_blank" rel="noreferrer">
                         <p className="text-white text-base">From: {shortenAddress(addressFrom)}</p>
                     </a>
                     <a href={`https://ropsten.etherscan.io/address/${addressTo}`} target="_blank" rel="noreferrer">
-                        <p className="text-white text-base">To: {shortenAddress(addressTo)}</p>
+                        <p className="text-white my-1 text-base">To: {shortenAddress(addressTo)}</p>
                     </a>
-                    <p className="text-white text-base">Amount: {amount} ETH</p>
+                    <p className="text-white my-1 text-base">Amount: {amount} ETH</p>
                     {message && (
                     <>
                     <br />
-                    <p className="text-white text-base">Message: {message}</p>
+                    <p className="text-white my-1 text-base  whitespace-nowrap overflow-hidden">Message: {message}</p>
                     </>
                         )}
                         {/* <img
@@ -68,11 +68,11 @@ const Transactions = () => {
                      
                     }
                     <div className="flex flex-wrap justify-center items-center mt-10">
-                        {/* {transactions?.reverse().map((transaction,id)=> */}
+                        {transactions?.reverse().map((transaction,id)=>
 
-                            {/* // <TransactionCard key={id} {...transaction}/> */}
-                            <Table/>
-                        {/* )} */}
+                        <TransactionCard key={id} {...transaction}/> 
+                            
+                        )}
                     </div>
 
             </div>
