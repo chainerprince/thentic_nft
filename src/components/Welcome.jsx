@@ -3,7 +3,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
-
+import favicon from "../favicon.svg"
 import {TransactionContext} from "../context/TransactionContext"
 
 import { shortenAddress } from "../utils/shortenAddress";
@@ -43,7 +43,7 @@ const Welcome = () => {
                     Send Crypto  across the Rwanda
                 </h1>
                 <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-                    Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto.
+                    Explore the crypto world. Buy and sell cryptocurrencies easily on Ishyura.
                 </p>
                 {
                   !currentAccount && 
@@ -83,7 +83,8 @@ const Welcome = () => {
                         <div className="flex justify-between flex-col w-full h-full">
                         <div className="flex justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                  <SiEthereum fontSize={21} color="#fff" />
+                  {/* <SiEthereum fontSize={21} color="#fff" /> */}
+                  <img src={favicon} alt="FAvorite Icons" />
                 </div>
                 <BsInfoCircle fontSize={17} color="#fff" />
               </div>
