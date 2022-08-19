@@ -44,12 +44,12 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
     )
 }
 const Transactions = () => {
-    const {currentAccount,transactions } = useContext(TransactionContext)
+    const {transactions } = useContext(TransactionContext)
     
     return (
         <div className="flex w-full justify-between items-center 2xl:px-20 main">
             <div className='flex flex-col md:p-12 py-12 px-4'>
-                    {currentAccount ? (
+                    {true ? (
                                 <h3 className="text-white text-3xl text-center my-2">
                                 Latest Transactions
                               </h3>

@@ -9,20 +9,15 @@ import {TransactionContext} from "../context/TransactionContext"
 import { shortenAddress } from "../utils/shortenAddress";
 import Modal from "./Modal";
 const Welcome = () => {
-  const {connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
+  const {formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
 
   const [open,setOpen] = useState(false);
   const [action,setAction] = useState('create');
 
+
+
   
-  //   if(open){
-  //     setOpen(false)
-  //   }else{
-  //     setOpen(true)
-  //   }
-  // }
   
-  // const [loading,isLoading] = useState(true);
   
   const isLoading = false;
  
@@ -51,10 +46,10 @@ const Welcome = () => {
                     Explore the nft world. Create and sell Nfts easily on Ishyura.
                 </p>
                 {
-                  !currentAccount && 
+                  
                   (
                     <button
-                 onClick={connectWallet}
+                //  onClick={connectWallet}
                  className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
                 >
                         <AiFillPlayCircle className="text-white mr-2" />
@@ -85,8 +80,8 @@ const Welcome = () => {
       </div>  
         <div className="flex flex-col flex-1 items-start justify-start w-full  mf:mt-0 mt-10">
                         <div className="p-3 flex justify-end items-start flex-col rounded-xl w-11/12 m-3 h-80 sm:w-3/4 mb-2  sm:my-7 second ">
-                        <div className="flex justify-between flex-col w-full sm:w-3/4 h-full">
-                        <div className="flex justify-between items-start">
+                        <div className="flex justify-between flex-col w-full sm:w-full h-full">
+                        <div className="flex justify-between items-start  ">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
                   {/* <SiEthereum fontSize={21} color="#fff" /> */}
                   <img src={favicon} alt="FAvorite Icons" />
@@ -95,7 +90,7 @@ const Welcome = () => {
               </div>
               <div>
                 <p className="text-white font-light text-sm">
-                  {shortenAddress(currentAccount)}
+                  {shortenAddress('worjlsd')}
                   {/* {currentAccount} */}
                 </p>
                 <p className="text-white font-semibold text-lg mt-1">
@@ -106,7 +101,7 @@ const Welcome = () => {
             
             </div>
              {
-                  currentAccount && 
+                  true && 
                   (
                   <button
                  onClick={()=>setOpen(true)}

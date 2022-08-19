@@ -1,13 +1,13 @@
 import React,{useState} from 'react';
 import Input from "./Input";
 import Loader from './Loader'
-const Modal = ({isLoading,handleChange,handleSubmit , setOpen}) => {
+const Modal = ({isLoading,handleChange,handleSubmit , setOpen,action}) => {
 
   const [openTab,setOpenTab] = useState(1);
     return (
 
   <div className=" sm:w-80 w-full absolute h-96 flex flex-col justify-start px-3 py-1 ml-1/2 mr-1/2 top-12 items-center blue-glassmorphism">
-              <h2 className="text-center font-bold text-white">Exhange tokens</h2>
+              <h2 className="text-center font-bold text-white">{action} nfts</h2>
               <button onClick={()=>setOpen(false)} className="absolute rounded-full bg-white p-1 opacity-70 -top-5 -right-2">
 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="#6563ff" d="M7,18a1,1,0,0,1-.707-1.707l10-10A.99989.99989,0,0,1,17.707,7.707l-10,10A.99676.99676,0,0,1,7,18Z"/><path fill="#6563ff" d="M17,18a.99676.99676,0,0,1-.707-.293l-10-10A.99989.99989,0,0,1,7.707,6.293l10,10A1,1,0,0,1,17,18Z"/></svg>
               </button>

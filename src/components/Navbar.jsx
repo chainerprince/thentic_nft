@@ -1,17 +1,39 @@
 import logo from '../../images/logo.png'
 import {HiMenuAlt4} from 'react-icons/hi'
 import {AiOutlineClose} from 'react-icons/ai'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import Modal from "./Modal";
+import {TransactionContext} from "../context/TransactionContext"
 
-const NavBarItem = ({title,classprops}) => {
+
+
+ 
+const Navbar = () => {
+    const [toggleMenu, setToggleMenu] = useState(false)
+     const [open,setOpen] = useState(false);
+     const [action,setAction] = useState('create');
+     const isLoading = false;
+
+     const {formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
+      const handleFormOpen = (action) => {
+        console.log(action,'the form opener')
+      setOpen(true)
+      setAction(action)
+    }
+
+     const handleSubmit = (e) => {
+
+      // const {addressTo,amount,keyword,message,contractName,blockchainSymbol} = formData;
+      e.preventDefault();
+      
+      sendTransaction();
+    }
+  const NavBarItem = ({title,classprops}) => {
     return (
-        <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
+        <li className={`mx-4 cursor-pointer ${classprops}`} onClick={()=>title.split(' ')[0] !== 'Show' && handleFormOpen(title.split(' ')[0])}>{title}</li>
     )
     
 }
-
-const Navbar = () => {
-    const [toggleMenu, setToggleMenu] = useState(false)
     return (
         <nav className="w-full main flex justify-between  items-center p-4">
              <div className="md:flex-1 flex-initial justify-center items-center">
@@ -20,9 +42,9 @@ const Navbar = () => {
 
 
             <ul className="text-white md:flex hidden list-none flex-row justify-around items-center flex-1">
-                    {["Create contract", "Mint Nft", "Transfer", "Show Nfts"].map((item, index) => (
-                            <NavBarItem key={item + index} title={item}  />
-                ))}
+                   {["Create contract", "Mint nft", "Exchange Nft", "Show Nfts"].map(
+              (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg"  />,
+            )}
             </ul>
 
             <div className="flex relative">
@@ -40,7 +62,7 @@ const Navbar = () => {
           >
             <li className="text-xl w-full my-2"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
             {["Create contract", "Mint nft", "Exchange Nft", "Show Nfts"].map(
-              (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" onClick={()=>handleOpen(item)} />,
+              (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" onClick={()=>handleFormOpen(item)} />,
             )}
           </ul> 
         )}
