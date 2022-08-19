@@ -12,8 +12,9 @@ const Welcome = () => {
   const {connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
 
   const [open,setOpen] = useState(false);
+  const [action,setAction] = useState('create');
 
-  // const toggleOpen = () => {
+  
   //   if(open){
   //     setOpen(false)
   //   }else{
@@ -24,8 +25,7 @@ const Welcome = () => {
   // const [loading,isLoading] = useState(true);
   
   const isLoading = false;
-  // const handleChange = () => {}
-    // const connectWallet = () => {}
+ 
     const handleSubmit = (e) => {
 
       const {addressTo,amount,keyword,message} = formData;
@@ -34,16 +34,21 @@ const Welcome = () => {
       sendTransaction();
     }
 
+    const handleFormOpen = (action) => {
+      setOpen(true)
+      setAction(action)
+    }
+
 
     return (
         <div className="flex w-full flex-col md:flex-row justify-center items-center main">
              <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
              <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
                 <h1 className="text-3xl sm:text-4xl text-white text-gradient py-1">
-                    Send Crypto  across the Rwanda
+                    All you need is here
                 </h1>
                 <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-                    Explore the crypto world. Buy and sell cryptocurrencies easily on Ishyura.
+                    Explore the nft world. Create and sell Nfts easily on Ishyura.
                 </p>
                 {
                   !currentAccount && 
@@ -124,7 +129,7 @@ const Welcome = () => {
         </div>   
         {
           open ? (
-            <Modal isLoading={isLoading} setOpen={setOpen} handleSubmit = {handleSubmit} handleChange={handleChange} /> 
+            <Modal isLoading={isLoading} setOpen={setOpen} handleSubmit = {handleSubmit} handleChange={handleChange} action={action} /> 
           ): null
         }
         

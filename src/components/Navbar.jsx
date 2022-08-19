@@ -20,12 +20,9 @@ const Navbar = () => {
 
 
             <ul className="text-white md:flex hidden list-none flex-row justify-around items-center flex-1">
-                    {["Market", "Exchange", "Tutorials", "Wallets"].map((item, index) => (
-                            <NavBarItem key={item + index} title={item} />
+                    {["Create contract", "Mint Nft", "Transfer", "Show Nfts"].map((item, index) => (
+                            <NavBarItem key={item + index} title={item}  />
                 ))}
-                <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
-                Login
-                </li>
             </ul>
 
             <div className="flex relative">
@@ -42,14 +39,18 @@ const Navbar = () => {
             flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in"
           >
             <li className="text-xl w-full my-2"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
-            {["Market", "Exchange", "Tutorials", "Wallets"].map(
-              (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" />,
+            {["Create contract", "Mint nft", "Exchange Nft", "Show Nfts"].map(
+              (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" onClick={()=>handleOpen(item)} />,
             )}
           </ul> 
         )}
             </div> 
 
-
+{
+          open ? (
+            <Modal isLoading={isLoading} setOpen={setOpen} handleSubmit = {handleSubmit} handleChange={handleChange} action={action} /> 
+          ): null
+        }
         </nav> 
     )
 }
