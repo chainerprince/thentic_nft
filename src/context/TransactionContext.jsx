@@ -17,8 +17,10 @@ const getEtheriumContract = () => {
 
 export const TransactionProvider = ({children}) => {
     
-    const [formData, setFormData] = useState({addressTo:"",amount:"",keyword:"",message:""})
+    const [formData, setFormData] = useState({name:"",short_name:""})
     const [isLoading, setisLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    
    
     
 
@@ -39,11 +41,11 @@ const headers = {
                     chain_id: 97,
                     name: 'PrinceContract',                         
                     short_name:"PRC",
-                    redirect_url: '/',                                  
-            },{headers})
-            console.log(res,'the result')
-
-            
+                    redirect_url: 'https://freedom-client.vercel.app',                                  
+            },{headers})            
+            if(res.status == 200){
+                setSuccess(true)
+            }                        
             // const txHash = await transactionContract.addToBlockchain(addressTo,parsedAmount,message,keyword);
             
 
@@ -59,7 +61,7 @@ const headers = {
         // checkTransactionExists();
     },[])
     return (
-        <TransactionContext.Provider value={{formData,setFormData,handleChange,sendTransaction}}>
+        <TransactionContext.Provider value={{formData,setFormData,handleChange,sendTransaction,success}}>
             {children}
         </TransactionContext.Provider>
     )

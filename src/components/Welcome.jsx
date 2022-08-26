@@ -8,8 +8,10 @@ import {TransactionContext} from "../context/TransactionContext"
 
 import { shortenAddress } from "../utils/shortenAddress";
 import Modal from "./Modal";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const Welcome = () => {
-  const {formData,setFormData,handleChange,sendTransaction} = useContext(TransactionContext);
+  const {formData,setFormData,handleChange,sendTransaction,success} = useContext(TransactionContext);
 
   const [open,setOpen] = useState(false);
   const [action,setAction] = useState('create');
@@ -20,13 +22,18 @@ const Welcome = () => {
   
   
   const isLoading = false;
+  const notify = () => toast("The contract was created");
  
     const handleSubmit = (e) => {
 
-      const {addressTo,amount,keyword,message} = formData;
+      const {name,short_name} = formData;
       e.preventDefault();
-      if(!addressTo || !amount || !keyword || !message) return;
+      if(!name || !short_name) return;
       sendTransaction();
+      if(success){
+        
+        notify()
+      }
     }
 
     const handleFormOpen = (action) => {
@@ -119,7 +126,7 @@ const Welcome = () => {
             {/* <div className="h-[1px] w-full bg-gray-400 my-2" /> */}
 
             
-           
+            <ToastContainer />
 
         </div>   
         {
